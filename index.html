@@ -45,34 +45,18 @@
     </script>
     <style>
         img { image-rendering: pixelated; }
-        
-        /* Smooth Scrolling */
         html { scroll-behavior: smooth; }
-
-        /* Custom Scrollbar */
         ::-webkit-scrollbar { width: 10px; background: #fff; border-left: 2px solid black; }
         ::-webkit-scrollbar-thumb { background: #39c5bb; border: 2px solid black; }
-
-        body {
-            background-color: #f0f8fa;
-            overflow-x: hidden;
-        }
-
-        /* --- THE JELLY EFFECT --- */
-        .jelly-hover {
-            transition: transform 0.2s;
-        }
-        .jelly-hover:hover {
-            animation: jelly 0.5s;
-        }
+        body { background-color: #f0f8fa; overflow-x: hidden; }
+        .jelly-hover { transition: transform 0.2s; }
+        .jelly-hover:hover { animation: jelly 0.5s; }
         @keyframes jelly {
             0%, 100% { transform: scale(1, 1); }
             25% { transform: scale(0.95, 1.05); }
             50% { transform: scale(1.05, 0.95); }
             75% { transform: scale(0.98, 1.02); }
         }
-
-        /* --- SCROLL REVEAL ANIMATIONS --- */
         .reveal-on-scroll {
             opacity: 0;
             transform: translateY(50px) scale(0.95);
@@ -82,8 +66,6 @@
             opacity: 1;
             transform: translateY(0) scale(1);
         }
-
-        /* --- BACKGROUND BUBBLES --- */
         .bubble {
             position: fixed;
             background: rgba(57, 197, 187, 0.1);
@@ -98,8 +80,6 @@
             10% { opacity: 1; }
             100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
         }
-
-        /* --- MOUSE TRAIL --- */
         .trail-dot {
             position: absolute;
             width: 8px;
@@ -118,8 +98,8 @@
 </head>
 <body class="font-pixel text-lg md:text-xl p-4 md:p-8 min-h-screen selection:bg-miku selection:text-white">
 
-    <audio id="mikuPlayer" loop>
-        <source src="miku 8bit.mp3" type="audio/mpeg">
+    <audio id="mikuPlayer" loop preload="auto">
+        <source src="miku-8bit.mp3" type="audio/mpeg">
     </audio>
 
     <div id="bubble-container"></div>
@@ -133,7 +113,6 @@
                 <i class="fa-solid fa-plus text-xl md:text-2xl"></i>
             </button>
         </div>
-
         <div class="flex gap-6 md:gap-8 text-xl md:text-2xl uppercase tracking-widest bg-white border-2 border-black px-6 py-2 shadow-retro w-full md:w-auto justify-center jelly-hover">
             <a href="#" class="text-gray-500 hover:text-black hover:underline decoration-4 decoration-miku">Home</a>
             <div class="flex flex-col items-center">
@@ -142,7 +121,6 @@
             </div>
             <a href="#" class="text-gray-500 hover:text-black hover:underline decoration-4 decoration-miku">Msg</a>
         </div>
-
         <div class="flex gap-4 w-full md:w-auto justify-center md:justify-end">
             <button class="jelly-hover flex-1 md:flex-none px-4 py-2 border-2 border-black bg-white text-black font-bold shadow-retro uppercase">Log in</button>
             <button class="jelly-hover flex-1 md:flex-none px-4 py-2 border-2 border-black bg-miku text-white font-bold shadow-retro uppercase">Sign up</button>
@@ -150,22 +128,17 @@
     </nav>
 
     <header class="relative w-full h-auto md:h-[450px] border-4 border-black bg-[#81e6d9] shadow-retro-lg mb-12 overflow-hidden flex flex-col md:block reveal-on-scroll group">
-        
         <div class="absolute inset-0 opacity-20 pointer-events-none" style="background-image: radial-gradient(black 1px, transparent 1px); background-size: 8px 8px;"></div>
-        
         <div class="relative z-10 p-6 md:p-12 w-full md:w-2/3">
             <div class="text-pink-500 font-bold text-xl md:text-2xl mb-2 flex items-center gap-2 font-header animate-pulse">
                 <span>MIKU.EXE</span> <i class="fa-solid fa-bolt"></i>
             </div>
-            
             <h1 class="jelly-hover cursor-default text-5xl xs:text-6xl md:text-8xl font-header text-black mb-6 leading-none drop-shadow-[4px_4px_0_rgba(255,255,255,1)]">MIKU</h1>
-            
             <div class="bg-white border-2 border-black p-4 mb-6 shadow-retro-sm max-w-md jelly-hover transform transition-transform">
                 <p class="text-gray-900 text-lg md:text-2xl leading-none font-mono">
                     <span class="text-miku-dark">></span> STATUS: <span class="text-green-600">Bubbly...</span>
                 </p>
             </div>
-
             <div class="flex flex-wrap items-center gap-4 md:gap-6 mb-8 md:mb-0">
                 <div class="flex gap-2">
                     <div class="w-3 h-3 md:w-4 md:h-4 bg-black animate-bounce delay-75"></div>
@@ -175,17 +148,14 @@
                 <a href="#" class="jelly-hover bg-black text-white px-4 py-1 hover:bg-miku hover:text-black border-2 border-transparent transition-colors">READ MORE_</a>
             </div>
         </div>
-
         <div class="relative md:absolute md:right-0 md:bottom-0 w-full md:w-auto h-[300px] md:h-[110%] flex justify-center md:block mt-auto pointer-events-none">
             <img src="https://upload.wikimedia.org/wikipedia/en/6/62/Hatsune_Miku_V4X.png" alt="Hatsune Miku" class="animate-float h-full object-contain drop-shadow-[8px_8px_0_rgba(0,0,0,0.2)] md:mr-8 pb-0 md:pb-0 translate-y-4 md:translate-y-0" style="image-rendering: pixelated;">
         </div>
     </header>
 
     <main class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
-        
         <section class="lg:col-span-3 flex flex-col gap-4 reveal-on-scroll">
             <h2 class="text-2xl md:text-3xl font-bold flex items-center gap-2 border-b-4 border-black w-max px-2">ARTWORK ></h2>
-            
             <div class="flex gap-4 h-64 overflow-x-auto pb-2 md:pb-0 scrollbar-hide">
                 <div class="min-w-[80%] md:min-w-0 flex-1 border-4 border-black bg-white relative group cursor-pointer shadow-retro jelly-hover">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Miku_Hatsune.png/640px-Miku_Hatsune.png" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500">
@@ -196,13 +166,11 @@
                     <div class="absolute bottom-0 w-full bg-black text-white text-lg text-center py-1 group-hover:bg-miku group-hover:text-black">@senzxc</div>
                 </div>
             </div>
-            
             <button class="jelly-hover w-full bg-white border-2 border-black py-2 text-xl md:text-2xl font-bold shadow-retro hover:bg-black hover:text-white transition-colors">VIEW MORE</button>
         </section>
 
         <section class="lg:col-span-5 reveal-on-scroll" style="transition-delay: 100ms;">
             <h2 class="text-2xl md:text-3xl font-bold mb-4 border-b-4 border-black w-max px-2">SEARCH_LOG</h2>
-            
             <div class="flex flex-col sm:flex-row gap-6">
                 <div class="flex flex-col gap-3 flex-grow order-2 sm:order-1">
                     <div class="jelly-hover bg-miku-light border-2 border-black p-2 px-4 shadow-retro-sm flex items-center gap-3 cursor-pointer group">
@@ -222,7 +190,6 @@
                         <span class="truncate">Hatsune miku cosplay</span>
                     </div>
                 </div>
-
                 <div class="flex flex-row sm:flex-col gap-4 w-full sm:w-32 order-1 sm:order-2 overflow-x-auto sm:overflow-visible pb-2 sm:pb-0">
                     <div class="min-w-[100px] sm:min-w-0 flex-1 bg-white border-2 border-black shadow-retro relative h-28 flex items-center justify-center jelly-hover">
                         <button class="absolute -top-3 -right-3 bg-red-500 border-2 border-black w-8 h-8 flex items-center justify-center text-white hover:bg-red-600 z-10 hover:scale-110 transition-transform">
@@ -248,7 +215,6 @@
                     <p class="text-base md:text-lg text-gray-500 leading-tight">System.out.print("Text");</p>
                 </div>
             </div>
-
             <div class="jelly-hover bg-white border-2 border-black p-4 flex gap-4 items-center shadow-retro cursor-pointer group">
                 <div class="w-12 h-12 border-2 border-black bg-miku-light flex items-center justify-center text-black shrink-0 group-hover:rotate-12 transition-transform">
                     <i class="fa-solid fa-microphone text-2xl"></i>
@@ -258,7 +224,6 @@
                     <p class="text-base md:text-lg text-gray-500 leading-tight">System.out.print("Text");</p>
                 </div>
             </div>
-
             <div class="jelly-hover bg-white border-2 border-black p-4 flex gap-4 items-center shadow-retro cursor-pointer group">
                 <div class="w-12 h-12 flex items-center justify-center text-black bg-yellow-300 border-2 border-black shrink-0 group-hover:rotate-12 transition-transform">
                     <i class="fa-solid fa-music text-2xl"></i>
@@ -269,36 +234,30 @@
                 </div>
             </div>
         </section>
-
     </main>
     
     <div class="h-10"></div>
 
     <script>
-        // NEW: AUTO-START MUSIC LOGIC
-        function startMusic() {
-            const player = document.getElementById('mikuPlayer');
+        // --- MUSIC AUTO-START LOGIC ---
+        const player = document.getElementById('mikuPlayer');
+        
+        function handleInteraction() {
             player.play().then(() => {
-                // Remove listeners once music successfully starts
-                window.removeEventListener('click', startMusic);
-                window.removeEventListener('touchstart', startMusic);
-                window.removeEventListener('scroll', startMusic);
-            }).catch(error => {
-                console.log("Waiting for user interaction to play music...");
-            });
+                console.log("Music started successfully!");
+                // Remove listeners to prevent restarting on every click
+                ['click', 'touchstart', 'scroll', 'keydown'].forEach(evt => 
+                    window.removeEventListener(evt, handleInteraction)
+                );
+            }).catch(e => console.log("Still waiting for real interaction..."));
         }
 
-        // Listen for first interaction to start the 8-bit melody
-        window.addEventListener('click', startMusic);
-        window.addEventListener('touchstart', startMusic);
-        window.addEventListener('scroll', startMusic);
+        // Add listeners for any user movement
+        ['click', 'touchstart', 'scroll', 'keydown'].forEach(evt => 
+            window.addEventListener(evt, handleInteraction)
+        );
 
-        // 1. SCROLL OBSERVER
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: "0px 0px -50px 0px"
-        };
-
+        // --- EXISTING UI SCRIPTS ---
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -306,48 +265,33 @@
                     observer.unobserve(entry.target); 
                 }
             });
-        }, observerOptions);
+        }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
 
-        document.querySelectorAll('.reveal-on-scroll').forEach(el => {
-            observer.observe(el);
-        });
+        document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
 
-        // 2. BACKGROUND BUBBLE GENERATOR
         function createBubble() {
             const bubble = document.createElement('div');
             bubble.classList.add('bubble');
-            
             const size = Math.random() * 40 + 10 + 'px'; 
             bubble.style.width = size;
             bubble.style.height = size;
             bubble.style.left = Math.random() * 100 + 'vw';
             bubble.style.animationDuration = Math.random() * 10 + 10 + 's'; 
-            
             const container = document.getElementById('bubble-container');
             if(container) container.appendChild(bubble);
-
-            setTimeout(() => {
-                bubble.remove();
-            }, 20000);
+            setTimeout(() => bubble.remove(), 20000);
         }
-
         setInterval(createBubble, 500);
 
-        // 3. MOUSE TRAIL EFFECT
         document.addEventListener('mousemove', (e) => {
             if(Math.random() > 0.3) return; 
-
             const dot = document.createElement('div');
             dot.classList.add('trail-dot');
             dot.style.left = e.pageX + 'px';
             dot.style.top = e.pageY + 'px';
             document.body.appendChild(dot);
-
-            setTimeout(() => {
-                dot.remove();
-            }, 500);
+            setTimeout(() => dot.remove(), 500);
         });
     </script>
-
 </body>
 </html>
