@@ -98,7 +98,7 @@
 </head>
 <body class="font-pixel text-lg md:text-xl p-4 md:p-8 min-h-screen selection:bg-miku selection:text-white">
 
-    <audio id="mikuPlayer" loop preload="auto">
+    <audio id="mikuPlayer" loop autoplay muted playsinline>
         <source src="miku-8bit.mp3" type="audio/mpeg">
     </audio>
 
@@ -239,25 +239,25 @@
     <div class="h-10"></div>
 
     <script>
-        // --- MUSIC AUTO-START LOGIC ---
         const player = document.getElementById('mikuPlayer');
-        
-        function handleInteraction() {
-            player.play().then(() => {
-                console.log("Music started successfully!");
-                // Remove listeners to prevent restarting on every click
-                ['click', 'touchstart', 'scroll', 'keydown'].forEach(evt => 
-                    window.removeEventListener(evt, handleInteraction)
-                );
-            }).catch(e => console.log("Still waiting for real interaction..."));
+
+        // Function to unmute and play
+        function playMiku() {
+            player.muted = false; 
+            player.play();        
+            
+            // Remove listeners so it only triggers once
+            ['click', 'touchstart', 'scroll', 'mousedown', 'mousemove'].forEach(type => {
+                window.removeEventListener(type, playMiku);
+            });
         }
 
-        // Add listeners for any user movement
-        ['click', 'touchstart', 'scroll', 'keydown'].forEach(evt => 
-            window.addEventListener(evt, handleInteraction)
-        );
+        // Trigger unmute on any movement
+        ['click', 'touchstart', 'scroll', 'mousedown', 'mousemove'].forEach(type => {
+            window.addEventListener(type, playMiku);
+        });
 
-        // --- EXISTING UI SCRIPTS ---
+        // --- UI ANIMATION SCRIPTS ---
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
